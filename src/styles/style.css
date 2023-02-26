@@ -18,3 +18,11 @@ body {
 span {
     margin: 2px;
 }
+
+.vitoria{
+    color: green;
+}
+
+.derrota{
+    color: red;
+}

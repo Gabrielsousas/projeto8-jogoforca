@@ -1,7 +1,7 @@
 import { useState } from "react";
 import palavras from "./palavras";
 
-export default function Jogo({ palavraSorteada, setPalavraSorteada, letrasClicadas }) {
+export default function Jogo({ palavraSorteada, setPalavraSorteada, letrasClicadas, setLetrasClicadas, setIniciarJogo, iniciarJogo }) {
   const [palavraEscondida, setPalavraEscondida] = useState("");
 
   function verificarLetra(letra) {
@@ -19,15 +19,18 @@ export default function Jogo({ palavraSorteada, setPalavraSorteada, letrasClicad
     return palavras[indice];
   }
 
-  function handleEscolherPalavraClick() {
+  function escolherPalavra() {
+    setIniciarJogo(true)
+    console.log(iniciarJogo)
+    setLetrasClicadas([])
     const palavra = sortearPalavra();
     setPalavraSorteada(palavra);
-    setPalavraEscondida(palavra.replace(/./g, "_"));
+    setPalavraEscondida(palavra.replace(/./g, "_"))
   }
 
   return (
     <div>
-      <button onClick={handleEscolherPalavraClick}>Escolher Palavra</button>
+      <button onClick={escolherPalavra}>Escolher Palavra</button>
       {palavraEscondida && (
         <div>
           {palavraEscondida.split("").map((letra, index) => (
