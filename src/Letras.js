@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Letras() {
+export default function Letras({ letrasClicadas, onLetraClick }) {
   const alfabeto = [
     "a",
     "b",
@@ -33,7 +33,9 @@ export default function Letras() {
   return (
     <div>
       {alfabeto.map((a) => (
-        <button key={a}>{a}</button>
+        <button key={a} onClick={() => onLetraClick(a)} disabled={letrasClicadas.includes(a)}>
+          {a}
+        </button>
       ))}
     </div>
   );
