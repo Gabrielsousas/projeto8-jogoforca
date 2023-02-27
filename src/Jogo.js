@@ -13,16 +13,6 @@ export default function Jogo({ palavraSorteada, setPalavraSorteada, letrasClicad
 
   const imagensForca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
-  function verificarLetra(letra) {
-    const novaPalavra = palavraSorteada
-      .split("")
-      .map((letraOriginal, index) =>
-        letraOriginal === letra ? letra : palavraEscondida[index]
-      )
-      .join("");
-    setPalavraEscondida(novaPalavra);
-  }
-
   function sortearPalavra() {
     const indice = Math.floor(Math.random() * palavras.length);
     return palavras[indice];
@@ -47,13 +37,13 @@ export default function Jogo({ palavraSorteada, setPalavraSorteada, letrasClicad
   
 
   return (
-    <div>
+    <div class="esquerda">
       {erros < imagensForca.length ? (
         <img data-test="game-image" src={imagensForca[erros]} />
       ) : (
         console.log("voce")
       )}
-
+      <div class="direita">
       <button onClick={escolherPalavra} data-test="choose-word">Escolher Palavra</button>
       {palavraEscondida && (
         <div data-test="word">
@@ -64,9 +54,12 @@ export default function Jogo({ palavraSorteada, setPalavraSorteada, letrasClicad
             >
               {letra === " " ? " " : letrasClicadas.includes(palavraSorteada[index]) ? palavraSorteada[index] : "_"}
             </span>
+            
           ))}
         </div>
+        
       )}
+      </div>
     </div>
   );
 }

@@ -22,12 +22,7 @@ export default function App() {
     }}
   return (
     <div>
-      <Letras
-        letrasClicadas={letrasClicadas}
-        onLetraClick={handleLetraClick}
-        iniciarJogo={iniciarJogo}
-        erros={erros}
-      />
+      
       <Jogo
         ref={jogoRef}
         palavraSorteada={palavraSorteada}
@@ -38,6 +33,12 @@ export default function App() {
         iniciarJogo={iniciarJogo}
         erros={erros}
         setErros={setErros}
+      />
+      <Letras
+        letrasClicadas={letrasClicadas}
+        onLetraClick={handleLetraClick}
+        iniciarJogo={iniciarJogo}
+        erros={erros}
       />
     </div>
     

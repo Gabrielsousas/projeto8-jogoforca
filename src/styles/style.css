@@ -1,5 +1,5 @@
 body {
-  background-color: white
+  background-color: white;
 }
 
 .escolher-palavra {
@@ -12,22 +12,51 @@ body {
   height: 24px;
   width: 80px;
   margin: 10px;
-  
 }
 
 span {
-    margin: 2px;
+  margin: 2px;
 }
 
-.vitoria{
-    color: green;
+.vitoria {
+  color: green;
 }
 
-.derrota{
-    color: red;
+.derrota {
+  color: red;
 }
 
 img {
   height: 200px;
   width: 200px;
+}
+
+.letra {
+  border: 1px solid #7AA7C7;
+  background: #e1ecf4;
+  width: 40px;
+  height: 40px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin: 5px;
+}
+
+:disabled {
+  background: #798A9F;
+}
+.esquerda{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.direita {
+  display: flex;
+flex-direction:  column;
+justify-content: space-around;
+
 }

@@ -33,7 +33,7 @@ export default function Letras({ letrasClicadas, onLetraClick, iniciarJogo,erros
   return (
     <div>
       {alfabeto.map((letra) => (
-        <button key={letra} data-test="letter" onClick={() => onLetraClick(letra)} disabled={letrasClicadas.includes(letra) || iniciarJogo === false || erros >= 6}>
+        <button class="letra" key={letra} data-test="letter" onClick={() => onLetraClick(letra)} disabled={letrasClicadas.includes(letra) || iniciarJogo === false || erros >= 6}>
           {letra}
         </button>
       ))}
