@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Letras({ letrasClicadas, onLetraClick, iniciarJogo }) {
+export default function Letras({ letrasClicadas, onLetraClick, iniciarJogo,erros }) {
   const alfabeto = [
     "a",
     "b",
@@ -33,7 +33,7 @@ export default function Letras({ letrasClicadas, onLetraClick, iniciarJogo }) {
   return (
     <div>
       {alfabeto.map((letra) => (
-        <button key={letra} data-test="letter" onClick={() => onLetraClick(letra)} disabled={letrasClicadas.includes(letra) || iniciarJogo === false}>
+        <button key={letra} data-test="letter" onClick={() => onLetraClick(letra)} disabled={letrasClicadas.includes(letra) || iniciarJogo === false || erros >= 6}>
           {letra}
         </button>
       ))}

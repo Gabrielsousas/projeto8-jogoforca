@@ -26,6 +26,7 @@ export default function App() {
         letrasClicadas={letrasClicadas}
         onLetraClick={handleLetraClick}
         iniciarJogo={iniciarJogo}
+        erros={erros}
       />
       <Jogo
         ref={jogoRef}
@@ -36,6 +37,7 @@ export default function App() {
         setIniciarJogo={setIniciarJogo}
         iniciarJogo={iniciarJogo}
         erros={erros}
+        setErros={setErros}
       />
     </div>
     

@@ -8,11 +8,10 @@ import forca4 from "./imagens/assets/forca4.png"
 import forca5 from "./imagens/assets/forca5.png"
 import forca6 from "./imagens/assets/forca6.png"
    
-export default function Jogo({ palavraSorteada, setPalavraSorteada, letrasClicadas, setLetrasClicadas, setIniciarJogo, iniciarJogo, erros}) {
+export default function Jogo({ palavraSorteada, setPalavraSorteada, letrasClicadas, setLetrasClicadas, setIniciarJogo, iniciarJogo, erros, setErros}) {
   const [palavraEscondida, setPalavraEscondida, ] = useState("");
 
   const imagensForca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
-
 
   function verificarLetra(letra) {
     const novaPalavra = palavraSorteada
@@ -30,27 +29,41 @@ export default function Jogo({ palavraSorteada, setPalavraSorteada, letrasClicad
   }
 
   function escolherPalavra() {
-    setIniciarJogo(true)
-    console.log(iniciarJogo)
-    setLetrasClicadas([])
+    setErros(0)
+    setIniciarJogo(true);
+    setLetrasClicadas([]);
     const palavra = sortearPalavra();
     setPalavraSorteada(palavra);
-    setPalavraEscondida(palavra.replace(/./g, "_"))
+    setPalavraEscondida(palavra.replace(/./g, "_"));
+    const divs = document.querySelectorAll("div[data-test='word']");
+    divs.forEach((div) => {
+      div.classList.remove("derrota");
+    });
+    const buttons = document.querySelectorAll("button[data-test^='letter']");
+    buttons.forEach((button) => {
+      button.removeAttribute("disabled");
+    });
   }
+  
 
   return (
     <div>
-  {erros < imagensForca.length ? (
-  <img data-test="game-image" src={imagensForca[erros]} />
-) : (
-console.log("voce perdeu")
-)}
+      {erros < imagensForca.length ? (
+        <img data-test="game-image" src={imagensForca[erros]} />
+      ) : (
+        console.log("voce")
+      )}
 
       <button onClick={escolherPalavra} data-test="choose-word">Escolher Palavra</button>
       {palavraEscondida && (
         <div data-test="word">
           {palavraEscondida.split("").map((letra, index) => (
-            <span key={index}>{letra === " " ? " " : letrasClicadas.includes(palavraSorteada[index]) ? palavraSorteada[index] : "_"}</span>
+            <span
+              key={index}
+              className={erros >= 6 ? "derrota" : ""}
+            >
+              {letra === " " ? " " : letrasClicadas.includes(palavraSorteada[index]) ? palavraSorteada[index] : "_"}
+            </span>
           ))}
         </div>
       )}
